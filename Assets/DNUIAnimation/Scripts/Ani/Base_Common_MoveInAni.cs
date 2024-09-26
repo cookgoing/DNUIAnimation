@@ -1,4 +1,3 @@
-
 namespace DNAni
 {
 	using UnityEngine;

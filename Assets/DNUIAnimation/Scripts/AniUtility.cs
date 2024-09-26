@@ -14,5 +14,19 @@ namespace DNAni
 			}
 		}
 
+		public static Keyframe CreateKeyFrame(float time, float value, float inTangent, float outTangent, float inWeight, float outWeight, WeightedMode mode = WeightedMode.None)
+		{
+			return new Keyframe()
+			{
+				time = time,
+				value = value,
+				inTangent = inTangent,
+				outTangent = outTangent,
+				inWeight = inWeight,
+				outWeight = outWeight,
+				weightedMode = mode
+			};
+		}
+
 	}
 }
