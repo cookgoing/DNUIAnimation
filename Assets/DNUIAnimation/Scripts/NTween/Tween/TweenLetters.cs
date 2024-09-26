@@ -59,7 +59,7 @@ public class TweenLetters : UITweener
 		mLabel.onPostFill -= OnPostFill;
 	}
 
-	void Awake ()
+	new void Awake ()
 	{
 		mLabel = GetComponent<UILabel>();
 		mCurrent = hoverOver;

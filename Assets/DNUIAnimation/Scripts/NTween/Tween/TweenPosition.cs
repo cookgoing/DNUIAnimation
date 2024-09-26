@@ -51,7 +51,7 @@ public class TweenPosition : UITweener
 		}
 	}
 
-	void Awake () { mRect = GetComponent<UIRect>(); }
+	new void Awake () { mRect = GetComponent<UIRect>(); }
 
 	/// <summary>
 	/// Tween the value.
