@@ -1,0 +1,54 @@
+# Unity generated files
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Mm]emoryCaptures/
+
+# Visual Studio / MonoDevelop generated files
+.vscode/
+.vs/
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+
+# Unity metadata files
+*.pidb.meta
+*.pdb
+*.mdb
+
+# Crash Reports
+sysinfo.txt
+
+# Generated or temporary files
+*.apk
+*.aab
+*.unitypackage
+
+# Asset Store Tools
+Assets/AssetStoreTools*
+
+# Mac system files
+.DS_Store
+
+# Ignore auto-generated JetBrains Rider files
+.idea/
+.idea/*workspace.xml
+.idea/*tasks.xml
+.idea/.idea/
+.idea/.idea.*
+
+# JetBrains Rider temp files
+*.sln.iml
+
+# Exclude personal preferences
+UserSettings/
