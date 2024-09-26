@@ -28,6 +28,12 @@
 			DNUILoopType loopType = (DNUILoopType)EditorGUILayout.EnumPopup(aniCom.LoopType, GUILayout.MaxWidth(100));
 			GUILayout.EndHorizontal();
 
+			GUILayout.BeginHorizontal();
+			GUILayout.Label("动画时长", GUILayout.MaxWidth(100));
+			GUILayout.Label(aniCom.AniLen.ToString(), GUILayout.MaxWidth(100));
+			GUILayout.Label("秒");
+			GUILayout.EndHorizontal();
+
 			if (GUI.changed)
 			{
 				aniCom.IsAuto = isAuto;

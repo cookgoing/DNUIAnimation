@@ -43,13 +43,14 @@ public abstract partial class UITweener : IDNUIAnimation
 	
 	public event Action<bool> OnAniComplete;
 
-	[ExecuteInEditMode]
 	protected virtual void Awake()
 	{
 		enabled = IsAuto;
 		EventDelegate.Set(onFinished, OnAniCompleteCallBack);
 		UpdateAniParam();
 	}
+
+	protected void OnValidate() => UpdateAniParam();
 
 	protected virtual void UpdateAniParam() {}
 	public void PlayBackward() => PlayReverse();
@@ -62,4 +63,5 @@ public abstract partial class UITweener : IDNUIAnimation
 
 		OnAniComplete?.Invoke(isForward);
 	} 
+
 }
