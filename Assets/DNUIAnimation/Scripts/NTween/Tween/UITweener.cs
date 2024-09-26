@@ -106,11 +106,11 @@ public abstract partial class UITweener : MonoBehaviour
 	[HideInInspector] public GameObject eventReceiver;
 	[HideInInspector] public string callWhenFinished;
 
-	bool mStarted = false;
-	float mStartTime = 0f;
-	float mDuration = 0f;
-	float mAmountPerDelta = 1000f;
-	float mFactor = 0f;
+	protected bool mStarted = false;
+	protected float mStartTime = 0f;
+	protected float mDuration = 0f;
+	protected float mAmountPerDelta = 1000f;
+	protected float mFactor = 0f;
 
 	/// <summary>
 	/// Amount advanced per delta time.
@@ -168,7 +168,7 @@ public abstract partial class UITweener : MonoBehaviour
 	/// Update the tweening factor and call the virtual update function.
 	/// </summary>
 
-	protected void DoUpdate ()
+	protected virtual void DoUpdate ()
 	{
 		float delta = ignoreTimeScale && !useFixedUpdate ? Time.unscaledDeltaTime : Time.deltaTime;
 		float time = ignoreTimeScale && !useFixedUpdate ? Time.unscaledTime : Time.time;
@@ -248,7 +248,7 @@ public abstract partial class UITweener : MonoBehaviour
 		else Sample(mFactor, false);
 	}
 
-	List<EventDelegate> mTemp = null;
+	protected List<EventDelegate> mTemp = null;
 
 	/// <summary>
 	/// Convenience function -- set a new OnFinished event delegate (here for to be consistent with RemoveOnFinished).
@@ -294,7 +294,7 @@ public abstract partial class UITweener : MonoBehaviour
 	/// Sample the tween at the specified factor.
 	/// </summary>
 
-	public void Sample (float factor, bool isFinished)
+	public virtual void Sample (float factor, bool isFinished)
 	{
 		// Calculate the sampling value
 		float val = Mathf.Clamp01(factor);
@@ -345,7 +345,7 @@ public abstract partial class UITweener : MonoBehaviour
 	/// Main Bounce logic to simplify the Sample function
 	/// </summary>
 	
-	float BounceLogic (float val)
+	protected float BounceLogic (float val)
 	{
 		if (val < 0.363636f) // 0.363636 = (1/ 2.75)
 		{
@@ -409,7 +409,7 @@ public abstract partial class UITweener : MonoBehaviour
 	/// If the tween is playing in reverse, this means the tween's end.
 	/// </summary>
 
-	public void ResetToBeginning ()
+	public virtual void ResetToBeginning ()
 	{
 		mStarted = false;
 		mFactor = (amountPerDelta < 0f) ? 1f : 0f;
