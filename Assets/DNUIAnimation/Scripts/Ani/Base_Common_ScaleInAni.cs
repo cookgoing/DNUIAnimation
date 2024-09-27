@@ -79,8 +79,10 @@ namespace DNAni
 		public Vector3 value_scale { get => transform.localScale;  set => transform.localScale = value; }
 	#endregion
 
-		protected override void DoUpdate ()
+		public override bool DoUpdate (bool fromSequence = false)
 		{
+			if (LockAni && !fromSequence) return false;
+
 			float delta = ignoreTimeScale && !useFixedUpdate ? Time.unscaledDeltaTime : Time.deltaTime;
 			float time = ignoreTimeScale && !useFixedUpdate ? Time.unscaledTime : Time.time;
 
@@ -91,7 +93,7 @@ namespace DNAni
 				mStartTime = time + delay;
 			}
 
-			if (time < mStartTime) return;
+			if (time < mStartTime) return false;
 
 			factor_fade += (duration_fade == 0f) ? 1f : amountPerDelta_fade * delta;
 			mFactor += (duration == 0f) ? 1f : amountPerDelta * delta;
@@ -164,10 +166,13 @@ namespace DNAni
 
 					current = before;
 				}
+
+				return true;
 			}
 			else
 			{
 				Sample(mFactor, false);
+				return false;
 			}
 		}
 

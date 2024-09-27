@@ -6,7 +6,7 @@ public abstract partial class UITweener : IDNUIAnimation
 {
 	[SerializeField]private bool _isAuto = true;
 
-	public DNUILoopType LoopType 
+	public virtual DNUILoopType LoopType 
 	{ 
 		get
 		{
@@ -29,13 +29,13 @@ public abstract partial class UITweener : IDNUIAnimation
 			}
 		}
 	}
-	public float Delay
+	public virtual float Delay
 	{
 		get => delay;
 		set => delay = value;
 	}
-	public float AniLen => duration;
-	public bool IsAuto
+	public virtual float AniLen => duration;
+	public virtual bool IsAuto
 	{
 		get => _isAuto;
 		set => _isAuto = value;

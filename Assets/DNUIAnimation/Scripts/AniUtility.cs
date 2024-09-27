@@ -1,5 +1,6 @@
 namespace DNAni
 {
+	using System.Collections.Generic;
 	using UnityEngine;
 
 	public static class AniUtility
@@ -28,5 +29,28 @@ namespace DNAni
 			};
 		}
 
+		public static bool SafeDequeue<T>(Queue<T> queue, out T value)
+		{
+			if (queue?.Count > 0)
+			{
+				value = queue.Dequeue();
+				return true;
+			}
+
+			value = default;
+			return false;
+		}
+
+		public static bool SafePeek<T>(Queue<T> queue, out T value)
+		{
+			if (queue?.Count > 0)
+			{
+				value = queue.Peek();
+				return true;
+			}
+
+			value = default;
+			return false;
+		}
 	}
 }
