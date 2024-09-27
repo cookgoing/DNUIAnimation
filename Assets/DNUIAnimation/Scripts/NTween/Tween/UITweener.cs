@@ -111,6 +111,7 @@ public abstract partial class UITweener : MonoBehaviour
 	protected float mDuration = 0f;
 	protected float mAmountPerDelta = 1000f;
 	protected float mFactor = 0f;
+	public bool LockAni{get; private set;}  = false;
 
 	/// <summary>
 	/// Amount advanced per delta time.
@@ -168,8 +169,10 @@ public abstract partial class UITweener : MonoBehaviour
 	/// Update the tweening factor and call the virtual update function.
 	/// </summary>
 
-	protected virtual void DoUpdate ()
+	public virtual bool DoUpdate (bool fromSequence = false)
 	{
+		if (LockAni && !fromSequence) return false;
+
 		float delta = ignoreTimeScale && !useFixedUpdate ? Time.unscaledDeltaTime : Time.deltaTime;
 		float time = ignoreTimeScale && !useFixedUpdate ? Time.unscaledTime : Time.time;
 
@@ -180,7 +183,7 @@ public abstract partial class UITweener : MonoBehaviour
 			mStartTime = time + delay;
 		}
 
-		if (time < mStartTime) return;
+		if (time < mStartTime) return false;
 
 		// Advance the sampling factor
 		mFactor += (duration == 0f) ? 1f : amountPerDelta * delta;
@@ -244,8 +247,14 @@ public abstract partial class UITweener : MonoBehaviour
 
 				current = before;
 			}
+
+			return true;
 		}
-		else Sample(mFactor, false);
+		else 
+		{
+			Sample(mFactor, false);
+			return false;
+		}
 	}
 
 	protected List<EventDelegate> mTemp = null;
@@ -500,4 +509,9 @@ public abstract partial class UITweener : MonoBehaviour
 	/// </summary>
 
 	public virtual void SetEndToCurrentValue () { }
+
+	public void SetAniLock(bool isLock)
+	{
+		LockAni = isLock;
+	}
 }
