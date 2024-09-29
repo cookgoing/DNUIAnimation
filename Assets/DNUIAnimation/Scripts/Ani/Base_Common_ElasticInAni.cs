@@ -3,8 +3,8 @@ namespace DNAni
 	using System.Collections.Generic;
 	using UnityEngine;
 
-	[AddComponentMenu("DNAni/Scale In")]
-	public partial class Base_Common_ScaleInAni : UITweener
+	[AddComponentMenu("DNAni/Elastic In")]
+	public partial class Base_Common_ElasticInAni : UITweener
 	{
 	#region fade
 		[Range(0f, 1f)] public float from_fade = 1f;
@@ -268,10 +268,10 @@ namespace DNAni
 			duration = 0.3f;
 			animationCurve = new AnimationCurve();
 			animationCurve.AddKey(AniUtility.CreateKeyFrame(0, 0, 2.522106f, 2.522106f, 0, 0.3333333f));
-			animationCurve.AddKey(AniUtility.CreateKeyFrame(0.496892f, 1.253214f, 0.1137532f, 0.1137532f, 0.0496448f, 0.493615f));
-			animationCurve.AddKey(AniUtility.CreateKeyFrame(0.6422406f, 0.806123f, 0.03269948f, 0.03269948f, 0.4947832f, 0.4698927f));
-			animationCurve.AddKey(AniUtility.CreateKeyFrame(0.7907559f, 1.124313f, -0.01179517f, -0.01179517f, 0.3333333f, 0.2833816f));
-			animationCurve.AddKey(AniUtility.CreateKeyFrame(0.9046756f, 0.9167718f, -0.02037314f, -0.02037314f, 0.3333333f, 0.7869032f));
+			animationCurve.AddKey(AniUtility.CreateKeyFrame(0.5000048f, 1.490061f, 0.1137532f, 0.1137532f, 0.0496448f, 0.493615f));
+			animationCurve.AddKey(AniUtility.CreateKeyFrame(0.6251927f, 0.7552961f, 0.03269948f, 0.03269948f, 0.4947832f, 0.4698927f));
+			animationCurve.AddKey(AniUtility.CreateKeyFrame(0.7522731f, 1.135387f, -0.01179517f, -0.01179517f, 0.3333333f, 0.2833816f));
+			animationCurve.AddKey(AniUtility.CreateKeyFrame(0.8801395f, 0.9368219f, -0.02037314f, -0.02037314f, 0.3333333f, 0.7869032f));
 			animationCurve.AddKey(AniUtility.CreateKeyFrame(1, 1, 0.8731046f, 0.8731046f, 0.3333333f, 0));
 		}
 	}

@@ -2,8 +2,8 @@ namespace DNAni
 {
 	using UnityEngine;
 
-	[AddComponentMenu("DNAni/Move In")]
-	public partial class Base_Common_MoveInAni : Base_Common_FadeInAni
+	[AddComponentMenu("DNAni/Drop In")]
+	public partial class Base_Common_DropInAni : Base_Common_FadeInAni
 	{
 		public Vector3 from_pos;
 		public Vector3 to_pos;
