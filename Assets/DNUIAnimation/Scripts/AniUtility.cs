@@ -52,5 +52,22 @@ namespace DNAni
 			value = default;
 			return false;
 		}
+	
+		public static Vector2 Point2Dto3D(Camera cam2d, Vector2 pointIn2D, float pointZInWorld)
+		{
+			// 想象一个3d（FOV = 60）的相机，某个特定的位置上，2D相机的画布，刚好填充3D相机视锥的整个面。
+			float size2D = cam2d.orthographicSize;
+			float scaleFactor = size2D / Mathf.Tan(Mathf.Deg2Rad* 30);
+			float cam3DPosZ = -scaleFactor;
+
+			float pointZIn3D = pointZInWorld - cam3DPosZ;
+			bool notRender = pointZIn3D <= 0;
+			if (notRender) return Vector3.zero;
+
+			float scale = 1 / (pointZIn3D / scaleFactor);
+			Vector2 newPos = (Vector2)pointIn2D * scale;
+
+			return new Vector3(newPos.x, newPos.y);
+		}
 	}
 }
