@@ -8,6 +8,7 @@
 [Mm]emoryCaptures/
 
 # Visual Studio / MonoDevelop generated files
+.vsconfig
 .vscode/
 .vs/
 *.csproj
