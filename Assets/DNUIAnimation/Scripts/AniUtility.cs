@@ -55,6 +55,12 @@ namespace DNAni
 	
 		public static Vector2 Point2Dto3D(Camera cam2d, Vector2 pointIn2D, float pointZInWorld)
 		{
+			if (!cam2d)
+			{
+				Debug.LogError("[error][Point2Dto3D]. cam2d == null");
+				return default;
+			}
+
 			// 想象一个3d（FOV = 60）的相机，某个特定的位置上，2D相机的画布，刚好填充3D相机视锥的整个面。
 			float size2D = cam2d.orthographicSize;
 			float scaleFactor = size2D / Mathf.Tan(Mathf.Deg2Rad* 30);

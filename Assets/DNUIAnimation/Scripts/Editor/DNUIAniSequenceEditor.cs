@@ -65,8 +65,10 @@ namespace DNAni.Editor
 
 				GUILayout.BeginHorizontal();
 				GUILayout.Space(20);
-				GUILayout.Label($"[{i}]: ", GUILayout.MaxWidth(20));
-				float newDelay = EditorGUILayout.FloatField(aniItem.delay, GUILayout.MaxWidth(50));
+				GUILayout.Label($"[{i}].", GUILayout.MaxWidth(22));
+				GUILayout.Label($"延迟", GUILayout.MaxWidth(30));
+				float newDelay = EditorGUILayout.FloatField(aniItem.delay, GUILayout.MaxWidth(20));
+				GUILayout.Label($"动画", GUILayout.MaxWidth(30));
 				UITweener newAniClip = (UITweener)EditorGUILayout.ObjectField(aniItem.aniClip, typeof(UITweener), true);
 				bool isRemove = GUILayout.Button("-", GUILayout.MaxWidth(20));
 				GUILayout.EndHorizontal();

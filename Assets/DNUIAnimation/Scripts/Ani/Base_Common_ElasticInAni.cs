@@ -112,23 +112,18 @@ namespace DNAni
 			}
 			else if (style == Style.PingPong)
 			{
-				if (factor_fade > 1f)
-				{
-					factor_fade = 1f - (factor_fade - Mathf.Floor(factor_fade));
-				}
-				else if(factor_fade < 0f)
-				{
-					factor_fade = -factor_fade;
-					factor_fade -= Mathf.Floor(factor_fade);
-				}
-
 				if (mFactor > 1f)
 				{
+					factor_fade = duration / duration_fade - (factor_fade - Mathf.Floor(factor_fade));
+
 					mFactor = 1f - (mFactor - Mathf.Floor(mFactor));
 					mAmountPerDelta = -mAmountPerDelta;
 				}
 				else if (mFactor < 0f)
 				{
+					factor_fade = -factor_fade;
+					factor_fade -= Mathf.Floor(factor_fade);
+
 					mFactor = -mFactor;
 					mFactor -= Mathf.Floor(mFactor);
 					mAmountPerDelta = -mAmountPerDelta;
@@ -246,7 +241,7 @@ namespace DNAni
 
 			bool isBackward = amountPerDelta < 0f;
 			mFactor = isBackward ? 1f : 0f;
-			factor_fade = isBackward ? 1f : 0f;
+			factor_fade = isBackward ? duration / duration_fade : 0f;
 
 			Sample(mFactor, false);
 		}

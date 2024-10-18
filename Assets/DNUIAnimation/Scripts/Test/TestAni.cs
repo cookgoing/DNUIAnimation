@@ -67,18 +67,20 @@ public class TestAni : MonoBehaviour
 		}
 	}
 
-	public Transform point2D;
-	public Camera camera2D;
-	[ContextMenu("TestPoint2DTo3D")]
-	void TestPoint2DTo3D()
-	{
-		Transform posTran = point2D.Find("pos");
-		Vector2 pos2D = posTran.localPosition;
-		float posZ = point2D.position.z;
+	/*
+		public Transform point2D;
+		public Camera camera2D;
+		[ContextMenu("TestPoint2DTo3D")]
+		void TestPoint2DTo3D()
+		{
+			Transform posTran = point2D.Find("pos");
+			Vector2 pos2D = posTran.localPosition;
+			float posZ = point2D.position.z;
 
-		Vector2 pos3D = AniUtility.Point2Dto3D(camera2D, pos2D, posZ);
-		print($"点在3D中的坐标：{pos3D}");
-	}
+			Vector2 pos3D = AniUtility.Point2Dto3D(camera2D, pos2D, posZ);
+			print($"点在3D中的坐标：{pos3D}");
+		}
+	*/
 }
 
 public class TestNewFuc
