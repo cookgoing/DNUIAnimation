@@ -5,6 +5,7 @@
 
 using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 /// <summary>
 /// UI Panel is responsible for collecting, sorting and updating widgets in addition to generating widgets' geometry.
@@ -181,6 +182,9 @@ public class UIPanel : UIRect
 	/// </summary>
 
 	public UIDrawCall.OnCreateDrawCall onCreateDrawCall;
+
+	public Action<UIWidget> onAddWidget;
+	public Action<UIWidget> onRemoveWidget;
 
 	// Clip texture feature contributed by the community: http://www.tasharen.com/forum/index.php?topic=9268.0
 	[HideInInspector][SerializeField] Texture2D mClipTexture = null;
@@ -1756,15 +1760,18 @@ public class UIPanel : UIRect
 		if (widgets.Count == 0)
 		{
 			widgets.Add(w);
+			onAddWidget?.Invoke(w);
 		}
 		else if (mSortWidgets)
 		{
 			widgets.Add(w);
 			SortWidgets();
+			onAddWidget?.Invoke(w);
 		}
 		else if (UIWidget.PanelCompareFunc(w, widgets[0]) == -1)
 		{
 			widgets.Insert(0, w);
+			onAddWidget?.Invoke(w);
 		}
 		else
 		{
@@ -1772,6 +1779,7 @@ public class UIPanel : UIRect
 			{
 				if (UIWidget.PanelCompareFunc(w, widgets[--i]) == -1) continue;
 				widgets.Insert(i+1, w);
+				onAddWidget?.Invoke(w);
 				break;
 			}
 		}
@@ -1784,7 +1792,10 @@ public class UIPanel : UIRect
 
 	public void RemoveWidget (UIWidget w)
 	{
-		if (widgets.Remove(w) && w.drawCall != null)
+		bool removeResult = widgets.Remove(w);
+		if (removeResult) onRemoveWidget?.Invoke(w);
+
+		if (removeResult && w.drawCall != null)
 		{
 			int depth = w.depth;
 			if (depth == w.drawCall.depthStart || depth == w.drawCall.depthEnd)
