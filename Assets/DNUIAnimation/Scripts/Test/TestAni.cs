@@ -81,6 +81,16 @@ public class TestAni : MonoBehaviour
 			print($"点在3D中的坐标：{pos3D}");
 		}
 	*/
+
+	[ContextMenu("TestChildren")]
+	void TestChildren()
+	{
+		// transform 集合里面，不包括自己
+		foreach(Transform child in transform)
+		{
+			print(child.name);
+		}
+	}
 }
 
 public class TestNewFuc

@@ -1,8 +1,6 @@
 namespace DNAni
 {
 	using System.Collections.Generic;
-	using System.Linq;
-	using System.Runtime.Serialization.Formatters;
 	using UnityEngine;
 
 	[AddComponentMenu("DNAni/Lean Come In")]

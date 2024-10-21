@@ -47,7 +47,7 @@ namespace DNAni
 		{
 			base.UpdateAniParam();
 
-			float offset = Screen.height * 0.03f; //widget_pos?.height ?? Screen.height * 0.03f;
+			float offset = widget_pos?.height * 0.5f ?? Screen.height * 0.03f;// Screen.height * 0.03f; //
 
 			from_pos = transform.localPosition + Vector3.up * offset;
 			to_pos = transform.localPosition;

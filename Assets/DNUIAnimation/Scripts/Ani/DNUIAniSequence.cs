@@ -3,7 +3,6 @@ namespace DNAni
 	using System;
 	using System.Collections.Generic;
 	using UnityEngine;
-	using UnityEngine.UIElements;
 
 	[AddComponentMenu("DNAni/Ani Sequence")]
 	public partial class DNUIAniSequence : UITweener
